@@ -61,4 +61,3 @@ sudo mount -rw system.img system
 3. Размонтируем раздел
 4. файл system.img  изменился и нужно обновить Хеш в файле datainfo (CRC16-CCITT Kermit)
 
-Пока в процессе разработки!!!
