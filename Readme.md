@@ -1,4 +1,99 @@
+# firmware structure of Kenwood MXLO15KLG4.
 
+Based on firmware 1G(S_V4_2_0206_0500) for Mitsubishi Outlander.  
+
+Structure firmware the same for  Mitsubishi ASX, Pajero and Lancer  
+
+| Folder                       |  Description                                                        |
+|------------------------------|---------------------------------------------------------------------|
+| NK_V4_2_0206_0500_8G         | [Android 4.2.2 with bootloader](#%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B0-%D1%84%D0%B0%D0%B9%D0%BB%D0%B0-navink_v4_2_0206_0500nfu)                                                                            |
+| UpdateVersionControl.ini     | [description of firmware](#UpdateVersionControlini)                 |
+
+
+# UpdateVersionControl.ini
+```
+#
+#S_V4_2_0206_0500
+#
+BT_V21C
+DB_V0.0.006.1300
+MAIN_V4_2_0206_0500
+NK_V4_2_0206_0500_8G
+PANEL_V4_2_0106_0500
+SXM_V0B2A01
+TCONF_V1_9_0006_0500
+TOUCH_V0_0_2246_0200
+UBOOT_V4_2_0206_0500_release
+# 
+# end
+#
+```
+
+
+# Structure of NaviNk_V4_2_0206_0500.nfu
+
+| Begin   | End     | Description                                                            |
+|---------|---------|------------------------------------------------------------------------|
+| 20      | 22      | CRC16 of zip file(CRC16-CCITT Kermit)                                  |
+| 90      | 9f      | Id of firmware                                                         |
+| 200     | 40200   | bios.bin                                                               |
+| 40200   | 80500   | s-bios.bin                                                             |
+| 80500   | 1480000 | boot.img (to unpack and pack you can use unmkbootimg и mkbootimg)      |
+| 1480000 | EOF     | zip file with system.img and bootloader                                |
+
+# Structure of Zip file from NaviNk_V4_2_0206_0500.nfu
+
+| Файл             | Описание                                                            |
+|------------------|---------------------------------------------------------------------|
+| datainfo         | CRC file holder (CRC16-CCITT Kermit)                                |
+| bin/qboot.bin    | qboot.bin                                                           |
+| bin/bios.bin     | bios.bin                                                            |
+| bin/s-bios.bin   | s-bios.bin                                                          |
+| bin/partition    | partition                                                           |
+| bin/system.img   | system image  with Android 4.2.2 and all applications               |
+| bin/boot.img     | boot.img (to unpack and pack you can use unmkbootimg и mkbootimg)   |
+
+# Structure of datainfo 
+```
+boot.img,1,e266,808000
+qboot.bin,1,dee5,5377000
+update_uImage,1,d42,8fe000
+RTFM_SH4A_MA100.bin,0,0,0
+system.img,1,ba5b,15c00000
+bios.bin,1,5105,c96c
+s-bios.bin,1,a016,4a24
+```
+```
+<Name of File>,1,<CRC16-CCITT Kermit>, <Size of File>
+```
+
+# Editing of NaviNk_V4_2_0206_0500.nfu
+1. Edit NaviNk_V4_2_0206_0500.nfu with WinHex
+2. calculate  checksum 8 bit 
+3. update CRC8  inside SumList.ini.
+```
+NaviNk_V4_2_0306_0500.nfu : <8 bit checksum>
+```
+
+# Edit zip  inside NaviNk_V4_2_0206_0500.nfu
+1. extract file from position 0x1480000(using WinHex)
+2. repack with new system.img
+3. calculate a new CRC16 for system.img (CRC16-CCITT Kermit)
+4. Update NaviNk_V4_2_0206_0500.nfu
+5. update CRC16 of zip file inside NaviNk_V4_2_0206_0500.nfu (position 0x20, alg: CRC16-CCITT Kermit)
+
+# edit system.img
+1. mount system.img
+```
+sudo mkdir system
+sudo mount -rw system.img system
+```
+2. Go to the system folder and modify data.
+3. unmount folder
+```
+sudo unmount system
+```
+4. change CRC16 of system.img inside datainfo (CRC16-CCITT Kermit)
 
 
 ===================
