@@ -98,7 +98,7 @@ sudo unmount system
 
 ===================
 
-# Проект по структуре прошивки для Kenwood MXLO15KLG4.
+# Структура прошивки для Kenwood MXLO15KLG4.
 
 На основе структура прошивки  1G(S_V4_2_0206_0500) для Mitsubishi Outlander.  
 
