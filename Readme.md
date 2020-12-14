@@ -39,18 +39,18 @@ UBOOT_V4_2_0206_0500_release
 | 200     | 40200   | bios.bin                                                               |
 | 40200   | 80500   | s-bios.bin                                                             |
 | 80500   | 1480000 | boot.img (to unpack and pack you can use unmkbootimg и mkbootimg)      |
-| 1480000 | EOF     | zip file with system.img and bootloader                                |
+| 1480000 | EOF     | [zip file with system.img and bootloader](#structure-of-zip-file-from-navink_v4_2_0206_0500nfu)                                |
 
 # Structure of Zip file from NaviNk_V4_2_0206_0500.nfu
 
 | Файл             | Описание                                                            |
 |------------------|---------------------------------------------------------------------|
-| datainfo         | CRC file holder (CRC16-CCITT Kermit)                                |
+| datainfo         | [CRC16 of files](#structure-of-datainfo)(CRC16-CCITT Kermit)        |
 | bin/qboot.bin    | qboot.bin                                                           |
 | bin/bios.bin     | bios.bin                                                            |
 | bin/s-bios.bin   | s-bios.bin                                                          |
 | bin/partition    | partition                                                           |
-| bin/system.img   | system image  with Android 4.2.2 and all applications               |
+| bin/system.img   | [system image  with Android 4.2.2 and all applications](#edit-systemimg)               |
 | bin/boot.img     | boot.img (to unpack and pack you can use unmkbootimg и mkbootimg)   |
 
 # Structure of datainfo 
@@ -140,18 +140,18 @@ UBOOT_V4_2_0206_0500_release
 | 200     | 40200   | bios.bin                                                            |
 | 40200   | 80500   | s-bios.bin                                                          |
 | 80500   | 1480000 | boot.img прошивки можно разобрать и собрать unmkbootimg и mkbootimg |
-| 1480000 | EOF     | zip файл с system.img и с бутлоадером                               |
+| 1480000 | EOF     | [zip файл с system.img и с бутлоадером](#structure-of-zip-file-from-navink_v4_2_0206_0500nfu)                               |
 
 # Структура Zip файла из NaviNk_V4_2_0206_0500.nfu
 
 | Файл             | Описание                                                            |
 |------------------|---------------------------------------------------------------------|
-| datainfo         | Файл с Хеш файлов из bin, Алгоритм CRC16-CCITT Kermit               |
+| datainfo         | [Файл с Хеш файлов из bin, Алгоритм CRC16-CCITT Kermit](#structure-of-datainfo)               |
 | bin/qboot.bin    | qboot.bin                                                           |
 | bin/bios.bin     | bios.bin                                                            |
 | bin/s-bios.bin   | s-bios.bin                                                          |
 | bin/partition    | partition                                                           |
-| bin/system.img   | образ Android 4.2.2 со всеми приложениями                           |
+| bin/system.img   | [образ Android 4.2.2 со всеми приложениями(#edit-systemimg)                           |
 | bin/boot.img     | boot.img прошивки можно разобрать и собрать unmkbootimg и mkbootimg |
 
 # Структура datainfo из Zip файла прошивки NaviNk_V4_2_0206_0500.nfu
