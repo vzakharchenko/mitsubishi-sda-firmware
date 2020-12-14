@@ -32,14 +32,14 @@ UBOOT_V4_2_0206_0500_release
 
 # Structure of NaviNk_V4_2_0206_0500.nfu
 
-| Begin   | End     | Description                                                            |
-|---------|---------|------------------------------------------------------------------------|
-| 20      | 22      | CRC16 of zip file(CRC16-CCITT Kermit)                                  |
-| 90      | 9f      | Id of firmware                                                         |
-| 200     | 40200   | bios.bin                                                               |
-| 40200   | 80500   | s-bios.bin                                                             |
-| 80500   | 1480000 | boot.img (to unpack and pack you can use unmkbootimg и mkbootimg)      |
-| 1480000 | EOF     | [zip file with system.img and bootloader](#structure-of-zip-file-from-navink_v4_2_0206_0500nfu)                                |
+| Begin    | End      | Description                                                            |
+|----------|----------|------------------------------------------------------------------------|
+| 20       | 22       | CRC16 of zip file(CRC16-CCITT Kermit)                                  |
+| 90       | 9f       | Id of firmware                                                         |
+| 0200     | 040200   | bios.bin                                                               |
+| 040200   | 080500   | s-bios.bin                                                             |
+| 080500   | 01480000 | boot.img (to unpack and pack you can use unmkbootimg и mkbootimg)      |
+| 01480000 | EOF      | [zip file with system.img and bootloader](#structure-of-zip-file-from-navink_v4_2_0206_0500nfu)                                |
 
 # Structure of Zip file from NaviNk_V4_2_0206_0500.nfu
 
@@ -133,14 +133,14 @@ UBOOT_V4_2_0206_0500_release
 
 # Структура файла NaviNk_V4_2_0206_0500.nfu
 
-| Начало  | Конец   | Описание                                                            |
-|---------|---------|---------------------------------------------------------------------|
-| 20      | 22      | Хеш сумма zip файла с system.img, Алгоритм CRC16-CCITT Kermit       |
-| 90      | 9f      | Идетификатор прошивки                                               |
-| 200     | 40200   | bios.bin                                                            |
-| 40200   | 80500   | s-bios.bin                                                          |
-| 80500   | 1480000 | boot.img прошивки можно разобрать и собрать unmkbootimg и mkbootimg |
-| 1480000 | EOF     | [zip файл с system.img и с бутлоадером](#structure-of-zip-file-from-navink_v4_2_0206_0500nfu)                               |
+| Начало   | Конец    | Описание                                                            |
+|----------|----------|---------------------------------------------------------------------|
+| 20       | 22       | Хеш сумма zip файла с system.img, Алгоритм CRC16-CCITT Kermit       |
+| 90       | 9f       | Идетификатор прошивки                                               |
+| 0200     | 040200   | bios.bin                                                            |
+| 040200   | 080500   | s-bios.bin                                                          |
+| 080500   | 01480000 | boot.img прошивки можно разобрать и собрать unmkbootimg и mkbootimg |
+| 01480000 | EOF      | [zip файл с system.img и с бутлоадером](#structure-of-zip-file-from-navink_v4_2_0206_0500nfu)                               |
 
 # Структура Zip файла из NaviNk_V4_2_0206_0500.nfu
 
